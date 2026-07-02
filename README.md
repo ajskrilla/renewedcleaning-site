@@ -1,43 +1,67 @@
-# Renewed Cleaning — modernized homepage (preview build)
+# Renewed Cleaning — modernized site (preview build)
 
-A single-file, modern, mobile-first homepage mock for **Renewed Cleaning LLC**, built so it can become the real site with a DNS change. Every piece of the current site's functionality is preserved.
-
-## What's carried over (nothing breaks in a cutover)
-- **Logo** and click-to-call **phone** — (720) 985-6161
-- **Get a Free Quote / Request a Consultation** → the real Jobber request form
-- **Client Login** → the real Jobber client hub
-- **Services** nav (Commercial, Residential, Aromatherapy) + the full service list
-- **FAQ**, footer quick links, and contact block
-- Existing selling points kept: 24-hour re-clean guarantee, client portal, job reports, eco-friendly, aromatherapy scent choice, after-hours
-
-## What's fixed / new
-- "Breathe easy" hero (typo corrected), single clear **Get a Free Quote** CTA
-- Denver-metro **service area** (replaces the "nationwide" claim)
-- **Trust signals**: insured & bonded, veteran & family owned, background-checked, no long-term contract
-- Rewritten, consistent copy + a real FAQ with answers
-- Fresh, modern design (eucalyptus + brass palette, "breathing" hero motif), fully responsive, accessible
-
-## Deploy to Cloudflare Pages
-1. Create a GitHub repo (e.g. `renewed-cleaning-site`) and push these files.
-2. Cloudflare dashboard → **Pages** → **Create → Connect to Git** → pick the repo.
-   - Framework preset: **None** · Build command: **(leave blank)** · Output directory: **/** (root)
-3. Deploy. Production URL: `renewed-cleaning.pages.dev`.
-4. **Preview links:** every branch and deploy gets its own unique URL — build on a branch and share that link with the family. Optionally add a custom domain like `renewed-preview.schillwerk.com` under Pages → Custom domains.
-
-The preview is kept out of Google via a `noindex` meta tag **and** `robots.txt`, so it can't compete with or duplicate the live site.
-
-## Confirm before this could go live (facts about the business)
-- [ ] Real public **email** (currently `info@renewedcleaning.org` placeholder — see footer)
-- [ ] **Insured / bonded / background-checked** wording — confirm with the family (used in the hero chips, trust strip, and FAQ)
-- [ ] **Service-area cities** are accurate
-- [ ] Confirm the **Jobber request-form URL** is the right one for general quote requests
-- [ ] Download the **logo + hero image** and host them locally (they're currently hot-linked from Renewed's CDN)
-
-## Going live (only after approval)
-- Remove the `noindex` meta tag and the `Disallow` in `robots.txt`
-- Point `renewedcleaning.org` DNS at the Pages project
-- Jobber scheduling + client login already point to their real hub, so those keep working unchanged
+A modern, mobile-first, **multi-page** site for **Renewed Cleaning LLC**, built so it can become the real site with a DNS change. Every piece of the current site's functionality is preserved.
 
 ## Files
-- `index.html` — the page (HTML + CSS + JS, self-contained)
-- `robots.txt` — keeps the preview unindexed
+- `index.html` — homepage
+- `commercial-cleaning.html` — Commercial Cleaning service page
+- `styles.css` — shared stylesheet (design system)
+- `app.js` — shared script (mobile menu, scroll reveal)
+- `robots.txt` — keeps the preview out of search engines
+
+## What's carried over (nothing breaks in a cutover)
+- Logo + click-to-call phone — (720) 985-6161
+- **Get a Free Quote / Free Consultation** -> the real Jobber request form
+- **Client Login** -> the real Jobber client hub
+- **Services** nav (Commercial, Residential, Aromatherapy) + full service list
+- FAQ, footer quick links, contact block
+- Kept selling points: 24-hour re-clean guarantee, client portal, job reports, eco-friendly, scent choice, after-hours
+
+## 1) Push to GitHub
+From inside this folder:
+
+    git init
+    git add .
+    git commit -m "Modernized Renewed Cleaning site (preview)"
+    git branch -M main
+
+Then EITHER (GitHub CLI):
+
+    gh repo create renewed-cleaning-site --private --source=. --remote=origin --push
+
+OR (manual — create an empty repo named renewed-cleaning-site on github.com first, no README):
+
+    git remote add origin https://github.com/ajskrilla/renewed-cleaning-site.git
+    git push -u origin main
+
+## 2) Host on Cloudflare Pages (same flow as schillwerk-site)
+1. dash.cloudflare.com -> **Workers & Pages** -> **Create** -> **Pages** -> **Connect to Git**
+2. Authorize GitHub (if needed) and pick **renewed-cleaning-site**
+3. Build settings:
+   - Framework preset: **None**
+   - Build command: **(leave blank)**
+   - Build output directory: **/**  (root — the HTML lives at the repo root)
+4. **Save and Deploy** -> live at `renewed-cleaning-site.pages.dev`
+
+## 3) Preview links for the family
+Every branch/commit gets its own preview URL automatically. To send a work-in-progress link:
+
+    git checkout -b preview
+    (make changes) git commit -am "tweak" && git push -u origin preview
+
+Cloudflare builds a unique `preview.renewed-cleaning-site.pages.dev` link to share.
+Optional: Pages -> Custom domains -> add `renewed-preview.schillwerk.com`.
+
+The preview is kept out of Google via `noindex` on every page + `robots.txt`.
+
+## Confirm before this could go live (facts about the business)
+- [ ] Real public **email** (currently `info@renewedcleaning.org` placeholder — footer)
+- [ ] **Insured / bonded / background-checked** wording — confirm with the family (hero chips, trust strip, FAQ)
+- [ ] **Service-area cities** are accurate
+- [ ] Confirm the **Jobber request-form URL** is the right destination for general quotes
+- [ ] Download the **logo + hero images** and host locally (currently hot-linked from Renewed's CDN)
+
+## Going live (only after approval)
+- Remove the `noindex` meta tag from both pages and the `Disallow` in `robots.txt`
+- Point `renewedcleaning.org` DNS at the Pages project
+- Jobber scheduling + client login already point at their real hub, so those keep working
