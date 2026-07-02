@@ -1,0 +1,4 @@
+# This is a PREVIEW/STAGING site — keep it out of search engines
+# so it never competes with or duplicates the live renewedcleaning.org
+User-agent: *
+Disallow: /

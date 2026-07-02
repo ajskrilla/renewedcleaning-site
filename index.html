@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- PREVIEW/MOCK — keep this out of Google so it never competes with the live site -->
+<meta name="robots" content="noindex, nofollow">
+<title>Renewed Cleaning LLC — Commercial & Residential Cleaning in Denver Metro</title>
+<meta name="description" content="Veteran- and family-owned commercial and residential cleaning serving the Denver metro. Insured & bonded, eco-friendly, with a 24-hour re-clean guarantee. Request a free quote.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#17241f; --ink-soft:#42524b;
+    --evergreen:#2f5d4e; --evergreen-deep:#22463a;
+    --sage-bg:#e7efe9; --sage-tint:#eff5f0;
+    --line:#d4e0d8;
+    --air:#f5f8f6; --white:#ffffff;
+    --brass:#bd8a3c; --brass-deep:#9f7228;
+    --maxw:1160px;
+    --r:14px;
+    --shadow:0 1px 2px rgba(23,36,31,.04), 0 12px 34px -18px rgba(23,36,31,.22);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--air); color:var(--ink);
+    font-family:"Figtree",system-ui,-apple-system,sans-serif;
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif; font-weight:700; line-height:1.08; letter-spacing:-.02em; margin:0}
+  a{color:inherit}
+  img{max-width:100%; display:block}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  .eyebrow{font-size:.74rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--brass-deep)}
+
+  /* buttons */
+  .btn{display:inline-flex; align-items:center; gap:.5em; font-family:"Figtree"; font-weight:600; font-size:1rem;
+    padding:.85em 1.5em; border-radius:100px; border:1px solid transparent; cursor:pointer; text-decoration:none; transition:.18s ease; white-space:nowrap}
+  .btn-primary{background:var(--evergreen); color:#fff}
+  .btn-primary:hover{background:var(--evergreen-deep); transform:translateY(-1px)}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--evergreen); color:var(--evergreen)}
+  :focus-visible{outline:3px solid var(--brass); outline-offset:2px; border-radius:4px}
+
+  /* header */
+  header{position:sticky; top:0; z-index:60; background:rgba(245,248,246,.82); backdrop-filter:blur(10px); border-bottom:1px solid transparent; transition:.2s}
+  header.scrolled{border-bottom-color:var(--line); background:rgba(245,248,246,.94)}
+  .nav{display:flex; align-items:center; gap:28px; padding:14px 0}
+  .brand{display:flex; align-items:center; gap:10px; margin-right:auto; text-decoration:none}
+  .brand img{height:44px; width:auto}
+  .brand .bname{font-family:"Bricolage Grotesque"; font-weight:700; font-size:1.05rem; color:var(--ink); letter-spacing:-.01em; line-height:1}
+  .brand .btag{font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft)}
+  .menu{display:flex; align-items:center; gap:26px; list-style:none; margin:0; padding:0}
+  .menu a{text-decoration:none; font-weight:500; color:var(--ink); font-size:.98rem; padding:6px 0; position:relative}
+  .menu a:hover{color:var(--evergreen)}
+  .has-drop{position:relative}
+  .dropbtn{background:none; border:0; font:inherit; font-weight:500; color:var(--ink); cursor:pointer; display:inline-flex; align-items:center; gap:5px; padding:6px 0}
+  .dropbtn svg{transition:.2s}
+  .has-drop:hover .dropbtn svg, .has-drop:focus-within .dropbtn svg{transform:rotate(180deg)}
+  .drop{position:absolute; top:calc(100% + 10px); left:50%; transform:translateX(-50%) translateY(6px); background:var(--white);
+    border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--shadow); padding:8px; min-width:240px; opacity:0; visibility:hidden; transition:.18s}
+  .has-drop:hover .drop, .has-drop:focus-within .drop{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0)}
+  .drop a{display:block; padding:10px 12px; border-radius:9px; font-weight:500}
+  .drop a:hover{background:var(--sage-tint)}
+  .drop a span{display:block; font-size:.8rem; color:var(--ink-soft); font-weight:400}
+  .nav-cta{display:flex; align-items:center; gap:14px}
+  .phone-link{display:inline-flex; align-items:center; gap:7px; font-weight:600; text-decoration:none; color:var(--evergreen)}
+  .login-link{text-decoration:none; font-weight:500; color:var(--ink-soft); font-size:.92rem}
+  .login-link:hover{color:var(--evergreen)}
+  .burger{display:none; background:none; border:1px solid var(--line); border-radius:10px; padding:9px; cursor:pointer}
+  .burger span{display:block; width:20px; height:2px; background:var(--ink); margin:4px 0; transition:.2s}
+
+  /* mobile drawer */
+  .drawer{position:fixed; inset:0 0 0 auto; width:min(88vw,360px); background:var(--white); z-index:80; transform:translateX(100%);
+    transition:transform .28s cubic-bezier(.4,0,.2,1); padding:22px; box-shadow:-20px 0 60px -30px rgba(0,0,0,.4); overflow-y:auto}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:18px}
+  .drawer-close{background:none; border:0; font-size:1.6rem; cursor:pointer; color:var(--ink); line-height:1}
+  .drawer nav a, .drawer nav .sub-label{display:block; padding:12px 4px; text-decoration:none; color:var(--ink); font-weight:600; border-bottom:1px solid var(--sage-bg)}
+  .drawer nav .sub a{font-weight:400; padding-left:16px; color:var(--ink-soft); font-size:.95rem}
+  .sub-label{color:var(--ink-soft)!important; font-size:.78rem!important; letter-spacing:.12em; text-transform:uppercase; font-weight:600!important; border:0!important; padding-bottom:4px!important}
+  .scrim{position:fixed; inset:0; background:rgba(23,36,31,.4); z-index:70; opacity:0; visibility:hidden; transition:.25s}
+  .scrim.open{opacity:1; visibility:visible}
+
+  /* hero */
+  .hero{position:relative; overflow:hidden}
+  .hero::before{content:""; position:absolute; top:-30%; left:50%; width:900px; height:900px; transform:translateX(-50%);
+    background:radial-gradient(closest-side, rgba(47,93,78,.16), rgba(47,93,78,.05) 55%, transparent 72%);
+    animation:breathe 9s ease-in-out infinite; z-index:0; pointer-events:none}
+  @keyframes breathe{0%,100%{transform:translateX(-50%) scale(1); opacity:.85} 50%{transform:translateX(-50%) scale(1.12); opacity:1}}
+  .hero-grid{position:relative; z-index:1; display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; padding:64px 0 74px}
+  .hero h1{font-size:clamp(2.7rem,5.4vw,4.3rem); font-weight:800; margin:18px 0 0}
+  .hero h1 .em{color:var(--evergreen)}
+  .hero p.lead{font-size:1.16rem; color:var(--ink-soft); margin:20px 0 30px; max-width:33ch}
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
+  .chips{display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:34px; padding-top:26px; border-top:1px solid var(--line)}
+  .chip{display:inline-flex; align-items:center; gap:8px; font-size:.92rem; font-weight:500; color:var(--ink)}
+  .chip svg{color:var(--evergreen); flex:none}
+  .hero-media{position:relative}
+  .hero-media img{width:100%; height:520px; object-fit:cover; border-radius:22px; box-shadow:var(--shadow)}
+  .badge{position:absolute; left:-18px; bottom:26px; background:var(--white); border:1px solid var(--line); border-radius:16px;
+    padding:14px 18px; box-shadow:var(--shadow); max-width:220px}
+  .badge b{font-family:"Bricolage Grotesque"; display:block; font-size:1.5rem; color:var(--evergreen); line-height:1}
+  .badge span{font-size:.85rem; color:var(--ink-soft)}
+
+  /* trust strip */
+  .trust{background:var(--evergreen); color:#eaf2ed}
+  .trust .wrap{display:flex; flex-wrap:wrap; gap:14px 40px; justify-content:center; padding:18px 24px; text-align:center}
+  .trust .t{display:inline-flex; align-items:center; gap:9px; font-weight:500; font-size:.96rem}
+  .trust .t svg{color:var(--brass); flex:none}
+
+  /* sections */
+  section{padding:84px 0}
+  .sec-head{max-width:640px; margin-bottom:44px}
+  .sec-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem); margin:12px 0 0}
+  .sec-head p{color:var(--ink-soft); margin:14px 0 0; font-size:1.08rem}
+
+  /* services */
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  .card{background:var(--white); border:1px solid var(--line); border-radius:var(--r); padding:28px; transition:.2s; border-top:3px solid transparent}
+  .card:hover{border-top-color:var(--brass); box-shadow:var(--shadow); transform:translateY(-3px)}
+  .card .ic{width:46px; height:46px; border-radius:12px; background:var(--sage-bg); display:grid; place-items:center; color:var(--evergreen); margin-bottom:16px}
+  .card h3{font-size:1.28rem}
+  .card p{color:var(--ink-soft); margin:10px 0 16px; font-size:.98rem}
+  .card a.more{text-decoration:none; font-weight:600; color:var(--evergreen); font-size:.95rem}
+  .card a.more:hover{color:var(--brass-deep)}
+  .more-list{margin-top:26px; display:flex; flex-wrap:wrap; gap:10px}
+  .pill{background:var(--white); border:1px solid var(--line); border-radius:100px; padding:9px 16px; font-size:.92rem; font-weight:500; color:var(--ink)}
+  .pill b{color:var(--evergreen); font-weight:600}
+
+  /* how we work — on sage */
+  .how{background:var(--sage-tint)}
+  .steps{display:grid; grid-template-columns:repeat(2,1fr); gap:20px 40px}
+  .step{display:flex; gap:16px; align-items:flex-start}
+  .step .n{font-family:"Bricolage Grotesque"; font-weight:700; color:var(--brass); font-size:1.05rem; border:1px solid var(--brass); width:34px; height:34px; border-radius:50%; display:grid; place-items:center; flex:none}
+  .step h3{font-size:1.12rem}
+  .step p{color:var(--ink-soft); margin:5px 0 0; font-size:.97rem}
+
+  /* service area */
+  .area{background:var(--evergreen-deep); color:#e9f1ec; border-radius:24px; padding:52px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center}
+  .area h2{color:#fff; font-size:clamp(1.8rem,3vw,2.4rem)}
+  .area p{color:#c8dad0; margin:14px 0 0}
+  .area .cities{display:flex; flex-wrap:wrap; gap:10px}
+  .area .cities span{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); border-radius:100px; padding:8px 15px; font-size:.94rem}
+
+  /* quote CTA */
+  .quote{text-align:center}
+  .quote .box{background:var(--white); border:1px solid var(--line); border-radius:24px; padding:56px 32px; box-shadow:var(--shadow); max-width:760px; margin:0 auto}
+  .quote h2{font-size:clamp(2rem,3.6vw,2.8rem)}
+  .quote p{color:var(--ink-soft); font-size:1.1rem; margin:14px auto 28px; max-width:46ch}
+  .quote .btn{font-size:1.06rem; padding:1em 1.9em}
+  .quote .sub{margin-top:16px; font-size:.9rem; color:var(--ink-soft)}
+
+  /* faq */
+  .faq-list{max-width:820px}
+  details{background:var(--white); border:1px solid var(--line); border-radius:12px; margin-bottom:12px; overflow:hidden}
+  details[open]{border-color:var(--evergreen)}
+  summary{list-style:none; cursor:pointer; padding:20px 24px; font-family:"Bricolage Grotesque"; font-weight:600; font-size:1.08rem; display:flex; justify-content:space-between; gap:16px; align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary .plus{flex:none; width:22px; height:22px; position:relative; transition:.2s}
+  summary .plus::before,summary .plus::after{content:""; position:absolute; background:var(--evergreen); border-radius:2px; top:50%; left:50%; transform:translate(-50%,-50%)}
+  summary .plus::before{width:14px; height:2px}
+  summary .plus::after{width:2px; height:14px; transition:.2s}
+  details[open] summary .plus::after{transform:translate(-50%,-50%) rotate(90deg); opacity:0}
+  details .ans{padding:0 24px 22px; color:var(--ink-soft); font-size:1rem}
+
+  /* footer */
+  footer{background:var(--ink); color:#c4d2cb; padding:64px 0 30px; font-size:.95rem}
+  .fgrid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.1fr; gap:36px}
+  footer h4{font-family:"Bricolage Grotesque"; color:#fff; font-size:1rem; margin:0 0 14px}
+  footer a{color:#c4d2cb; text-decoration:none; display:block; padding:5px 0}
+  footer a:hover{color:var(--brass)}
+  .fbrand img{height:40px; margin-bottom:14px; filter:brightness(0) invert(1); opacity:.92}
+  .fbrand p{color:#93a69d; margin:0; max-width:30ch}
+  .fbadge{display:inline-flex; align-items:center; gap:8px; margin-top:16px; font-size:.85rem; color:#fff; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.13); padding:7px 13px; border-radius:100px}
+  .fbot{border-top:1px solid rgba(255,255,255,.12); margin-top:44px; padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; color:#8ba095; font-size:.85rem}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1; transform:none}
+
+  @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr; gap:36px; padding:44px 0 54px}
+    .hero-media img{height:360px}
+    .cards{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .area{grid-template-columns:1fr; padding:36px}
+    .fgrid{grid-template-columns:1fr 1fr; gap:28px}
+  }
+  @media (max-width:760px){
+    .menu,.nav-cta .phone-text,.nav-cta .login-link,.nav-cta .btn{display:none}
+    .nav-cta .burger{display:block}
+    .badge{left:12px}
+  }
+  @media (max-width:520px){ .fgrid{grid-template-columns:1fr} .trust .wrap{justify-content:flex-start} }
+  @media (prefers-reduced-motion:reduce){
+    .hero::before{animation:none}
+    .reveal{transition:none; opacity:1; transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- =========== HEADER =========== -->
+<header id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Renewed Cleaning LLC home">
+      <img src="https://d13cw1lxlociqy.cloudfront.net/vxw0cr1rwxtp3wmlu0m17guldjv5" alt="Renewed Cleaning LLC logo">
+      <span>
+        <span class="bname">Renewed Cleaning</span>
+        <span class="btag">Denver Metro</span>
+      </span>
+    </a>
+
+    <ul class="menu">
+      <li><a href="#top">Home</a></li>
+      <li class="has-drop">
+        <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Services
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="drop">
+          <a href="#services">Commercial Cleaning<span>Offices, janitorial & common areas</span></a>
+          <a href="#services">Residential Housekeeping<span>Homes & recurring care</span></a>
+          <a href="#services">Aromatherapy After-Care<span>Sprays, diffusers & more</span></a>
+        </div>
+      </li>
+      <li><a href="#how">Why Us</a></li>
+      <li><a href="#area">Service Area</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a class="phone-link" href="tel:+17209856161"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.5-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg><span class="phone-text">(720)&nbsp;985-6161</span></a>
+      <a class="login-link" href="https://clienthub.getjobber.com/client_hubs/0398b874-1f69-44bb-8e31-e739b4f57057/login/new?source=share_login" target="_blank" rel="noopener">Client Login</a>
+      <a class="btn btn-primary" href="https://clienthub.getjobber.com/hubs/0398b874-1f69-44bb-8e31-e739b4f57057/public/requests/2457077/embedded_new?source=sp_website&amp;instance_id=_R_5j5_" target="_blank" rel="noopener">Get a Free Quote</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="bname" style="font-family:'Bricolage Grotesque';font-weight:700">Renewed Cleaning</span>
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+  </div>
+  <nav>
+    <a href="#top">Home</a>
+    <span class="sub-label">Services</span>
+    <div class="sub">
+      <a href="#services">Commercial Cleaning</a>
+      <a href="#services">Residential Housekeeping</a>
+      <a href="#services">Aromatherapy After-Care</a>
+    </div>
+    <a href="#how">Why Us</a>
+    <a href="#area">Service Area</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://clienthub.getjobber.com/client_hubs/0398b874-1f69-44bb-8e31-e739b4f57057/login/new?source=share_login" target="_blank" rel="noopener">Client Login</a>
+    <a class="phone-link" style="padding:14px 4px" href="tel:+17209856161">Call (720) 985-6161</a>
+    <a class="btn btn-primary" style="margin-top:14px;width:100%;justify-content:center" href="https://clienthub.getjobber.com/hubs/0398b874-1f69-44bb-8e31-e739b4f57057/public/requests/2457077/embedded_new?source=sp_website&amp;instance_id=_R_5j5_" target="_blank" rel="noopener">Get a Free Quote</a>
+  </nav>
+</aside>
+
+<!-- =========== HERO =========== -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Commercial &amp; Residential &middot; Denver Metro</span>
+      <h1>Breathe easy.<br><span class="em">Live renewed.</span></h1>
+      <p class="lead">Veteran- and family-owned cleaning for Denver-area businesses and homes — thorough, dependable, and finished with a signature aromatherapy touch.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="https://clienthub.getjobber.com/hubs/0398b874-1f69-44bb-8e31-e739b4f57057/public/requests/2457077/embedded_new?source=sp_website&amp;instance_id=_R_5j5_" target="_blank" rel="noopener">Request a free quote</a>
+        <a class="btn btn-ghost" href="tel:+17209856161">Call (720)&nbsp;985-6161</a>
+      </div>
+      <div class="chips">
+        <span class="chip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Insured &amp; bonded</span>
+        <span class="chip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z"/></svg>Veteran &amp; family owned</span>
+        <span class="chip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 019 6.7C11 5 13 4 13 4s0 3 2 5 3 4 1 7a5 5 0 01-5 4z"/></svg>Eco-friendly products</span>
+        <span class="chip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2M12 3a9 9 0 100 18 9 9 0 000-18z"/></svg>24-hour re-clean guarantee</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="https://d13cw1lxlociqy.cloudfront.net/s1bvx27k3efgpwjx6bf7r2y5dvb5" alt="Bright, freshly cleaned modern office with large windows and plants">
+      <div class="badge"><b>24 hrs</b><span>Not right? We re-clean within 24 hours — guaranteed.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== TRUST STRIP =========== -->
+<div class="trust">
+  <div class="wrap">
+    <span class="t"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Background-checked team</span>
+    <span class="t"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>No long-term contract</span>
+    <span class="t"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Job report after every visit</span>
+    <span class="t"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>You set the schedule</span>
+  </div>
+</div>
+
+<!-- =========== SERVICES =========== -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>Cleaning built around your space</h2>
+      <p>From recurring janitorial upkeep to a one-time deep clean, tailored to your business or home — and finished the Renewed way.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V7l9-4 9 4v14M3 21h18M9 21v-6h6v6"/></svg></div>
+        <h3>Commercial Cleaning</h3>
+        <p>Offices, common areas, and janitorial upkeep tailored to your business — consistent and dependable.</p>
+        <a class="more" href="#quote">Get a quote &rarr;</a>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg></div>
+        <h3>Residential Housekeeping</h3>
+        <p>Recurring home cleaning and detailed care that gives busy households their weekends back.</p>
+        <a class="more" href="#quote">Get a quote &rarr;</a>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21a5 5 0 01-2-9.5C11 10 12 3 12 3s1 7 2 8.5A5 5 0 0112 21z"/></svg></div>
+        <h3>Aromatherapy After-Care</h3>
+        <p>Room sprays, diffusers, and a tips-and-tricks booklet in a scent you choose — so your space stays fresh between visits.</p>
+        <a class="more" href="#quote">Get a quote &rarr;</a>
+      </div>
+    </div>
+    <div class="more-list reveal">
+      <span class="pill"><b>+</b> Common area cleaning</span>
+      <span class="pill"><b>+</b> Deep cleaning</span>
+      <span class="pill"><b>+</b> Move-in cleaning</span>
+      <span class="pill"><b>+</b> Move-out cleaning</span>
+      <span class="pill"><b>+</b> Recurring plans (weekly, bi-weekly, monthly)</span>
+    </div>
+  </div>
+</section>
+
+<!-- =========== HOW WE WORK =========== -->
+<section id="how" class="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Why choose Renewed</span>
+      <h2>A simple approach that puts you first</h2>
+      <p>The reasons Denver businesses stay with us — clear communication, real accountability, and none of the guesswork.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><div><h3>Clear communication</h3><p>Every visit gets a completed job form, sent to you for review — so there are never any surprises.</p></div></div>
+      <div class="step reveal"><div class="n">2</div><div><h3>24-hour guarantee</h3><p>If something isn't quite right, tell us within 24 hours and we'll make it right within 24 hours.</p></div></div>
+      <div class="step reveal"><div class="n">3</div><div><h3>Your own client portal</h3><p>Request jobs, see what's scheduled, who's coming, and every completed visit — all in one place.</p></div></div>
+      <div class="step reveal"><div class="n">4</div><div><h3>Reliable scheduling</h3><p>You set the dates and frequency that work for you, and we'll be there.</p></div></div>
+      <div class="step reveal"><div class="n">5</div><div><h3>Eco-friendly solutions</h3><p>Effective products that are gentle on your space, your people, and the planet.</p></div></div>
+      <div class="step reveal"><div class="n">6</div><div><h3>Veteran &amp; family owned</h3><p>A local team that treats your space with the discipline and care you'd expect from your own.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== SERVICE AREA =========== -->
+<section id="area">
+  <div class="wrap">
+    <div class="area reveal">
+      <div>
+        <span class="eyebrow" style="color:var(--brass)">Where we clean</span>
+        <h2>Proudly serving the Denver metro</h2>
+        <p>Local, responsive, and close by. If you're near one of these communities, we'd love to help — not sure if you're in range? Just ask.</p>
+      </div>
+      <div class="cities">
+        <span>Denver</span><span>Aurora</span><span>Thornton</span><span>Northglenn</span>
+        <span>Commerce City</span><span>Brighton</span><span>Westminster</span><span>Arvada</span>
+        <span>Lakewood</span><span>Centennial</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== QUOTE CTA =========== -->
+<section id="quote" class="quote">
+  <div class="wrap">
+    <div class="box reveal">
+      <span class="eyebrow">Free consultation</span>
+      <h2>Let's get your space Renewed</h2>
+      <p>Tell us a little about your space and how often you'd like it cleaned. We'll set up a quick walkthrough and send a written proposal — usually within one business day.</p>
+      <a class="btn btn-primary" href="https://clienthub.getjobber.com/hubs/0398b874-1f69-44bb-8e31-e739b4f57057/public/requests/2457077/embedded_new?source=sp_website&amp;instance_id=_R_5j5_" target="_blank" rel="noopener">Request your free quote</a>
+      <p class="sub">Prefer to talk? Call or text <a href="tel:+17209856161" style="color:var(--evergreen);font-weight:600;text-decoration:none">(720) 985-6161</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FAQ =========== -->
+<section id="faq" class="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Good to know</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="faq-list">
+      <!-- NOTE for Andrew: confirm the insurance/bonding/contract specifics with the family before publishing -->
+      <details class="reveal"><summary>Are you insured and bonded?<span class="plus"></span></summary><div class="ans">Yes. We carry liability coverage and our team is background-checked, so your property and people are protected while we work. <em>(Please confirm exact coverage wording with the family before this goes live.)</em></div></details>
+      <details class="reveal"><summary>What areas do you serve?<span class="plus"></span></summary><div class="ans">We serve Denver and the surrounding metro, including Aurora, Thornton, Northglenn, Commerce City, Brighton, and nearby communities. Not sure if you're in range? Just reach out and we'll let you know.</div></details>
+      <details class="reveal"><summary>Do I have to sign a long-term contract?<span class="plus"></span></summary><div class="ans">No. We work from a simple written proposal that lays out your services and cost, and you can adjust your plan any time with a quick call.</div></details>
+      <details class="reveal"><summary>How does getting a quote work?<span class="plus"></span></summary><div class="ans">Request a free consultation, we'll do a quick walkthrough of your space, and you'll get a clear written proposal — usually within one business day.</div></details>
+      <details class="reveal"><summary>Do you offer after-hours cleaning?<span class="plus"></span></summary><div class="ans">Yes. We schedule around your business hours so cleaning never gets in the way of your day.</div></details>
+      <details class="reveal"><summary>How do I know the work got done?<span class="plus"></span></summary><div class="ans">After every visit you receive a completed job report, and you can see upcoming and completed jobs any time in your client portal.</div></details>
+      <details class="reveal"><summary>Can I choose my aromatherapy scent?<span class="plus"></span></summary><div class="ans">Absolutely. Your after-care package is built around a scent you pick, so your space smells exactly the way you want it to.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FOOTER =========== -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <img src="https://d13cw1lxlociqy.cloudfront.net/vxw0cr1rwxtp3wmlu0m17guldjv5" alt="Renewed Cleaning LLC logo">
+        <p>Commercial &amp; residential cleaning for the Denver metro, finished with a fresh aromatherapy touch.</p>
+        <span class="fbadge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z"/></svg>Veteran &amp; Family Owned</span>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="#services">Commercial Cleaning</a>
+        <a href="#services">Residential Housekeeping</a>
+        <a href="#services">Aromatherapy After-Care</a>
+        <a href="#services">Deep &amp; Move-In/Out</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#how">Why Us</a>
+        <a href="#area">Service Area</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://clienthub.getjobber.com/client_hubs/0398b874-1f69-44bb-8e31-e739b4f57057/login/new?source=share_login" target="_blank" rel="noopener">Client Login</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+17209856161">(720) 985-6161</a>
+        <!-- TODO: confirm the real public email address -->
+        <a href="mailto:info@renewedcleaning.org">info@renewedcleaning.org</a>
+        <a class="btn btn-primary" style="margin-top:12px" href="https://clienthub.getjobber.com/hubs/0398b874-1f69-44bb-8e31-e739b4f57057/public/requests/2457077/embedded_new?source=sp_website&amp;instance_id=_R_5j5_" target="_blank" rel="noopener">Get a Free Quote</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>&copy; 2026 Renewed Cleaning LLC. All rights reserved.</span>
+      <span>Denver Metro, Colorado</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // header shadow on scroll
+  const header = document.getElementById('top');
+  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 8), {passive:true});
+
+  // mobile drawer
+  const drawer = document.getElementById('drawer'), scrim = document.getElementById('scrim');
+  const openD = () => { drawer.classList.add('open'); scrim.classList.add('open'); drawer.setAttribute('aria-hidden','false'); };
+  const closeD = () => { drawer.classList.remove('open'); scrim.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); };
+  document.getElementById('burger').addEventListener('click', openD);
+  document.getElementById('drawerClose').addEventListener('click', closeD);
+  scrim.addEventListener('click', closeD);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeD));
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
