@@ -175,7 +175,7 @@
     .area{grid-template-columns:1fr; padding:36px}
     .fgrid{grid-template-columns:1fr 1fr; gap:28px}
   }
-  @media (max-width:760px){
+  @media (max-width:900px){
     .menu,.nav-cta .phone-text,.nav-cta .login-link,.nav-cta .btn{display:none}
     .nav-cta .burger{display:block}
     .badge{left:12px}
@@ -196,3 +196,9 @@
 .what-list .pill{background:var(--sage-tint)}
 @media (max-width:920px){ .cards.cols-4{grid-template-columns:repeat(2,1fr)} }
 @media (max-width:520px){ .cards.cols-4{grid-template-columns:1fr} }
+
+/* --- header alignment cleanup --- */
+.brand .bname, .brand .btag{display:block}
+.menu a, .dropbtn, .login-link, .phone-link, .phone-text{white-space:nowrap}
+.nav{gap:24px}
+.menu{gap:22px}
