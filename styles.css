@@ -159,7 +159,9 @@
   footer h4{font-family:"Bricolage Grotesque"; color:#fff; font-size:1rem; margin:0 0 14px}
   footer a{color:#c4d2cb; text-decoration:none; display:block; padding:5px 0}
   footer a:hover{color:var(--brass)}
-  .fbrand img{height:68px; margin-bottom:16px; filter:brightness(0) invert(1); opacity:.92}
+  .fbrand-lockup{display:flex; align-items:center; gap:12px; margin-bottom:14px}
+  .fbrand-lockup img{height:46px; width:auto}
+  .fbrand-lockup span{font-family:"Bricolage Grotesque"; font-weight:700; color:#fff; font-size:1.2rem; letter-spacing:-.01em}
   .fbrand p{color:#93a69d; margin:0; max-width:30ch}
   .fbadge{display:inline-flex; align-items:center; gap:8px; margin-top:16px; font-size:.85rem; color:#fff; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.13); padding:7px 13px; border-radius:100px}
   .fbot{border-top:1px solid rgba(255,255,255,.12); margin-top:44px; padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; color:#8ba095; font-size:.85rem}
@@ -202,3 +204,9 @@
 .menu a, .dropbtn, .login-link, .phone-link, .phone-text{white-space:nowrap}
 .nav{gap:24px}
 .menu{gap:22px}
+
+/* --- footer client-login button --- */
+.fbtns{display:flex; flex-direction:column; gap:10px; align-items:flex-start; margin-top:14px}
+.flogin{display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.38); color:#fff; padding:9px 17px; border-radius:100px; font-weight:600; font-size:.95rem; text-decoration:none; transition:.18s}
+.flogin:hover{background:rgba(255,255,255,.1); border-color:#fff; color:#fff}
+.flogin svg{flex:none}
